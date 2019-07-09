@@ -1,0 +1,218 @@
+---
+# downloads: ~/.ansible-downloads/
+downloads: $DEVWORLD_ROOT/src/.ansible-downloads/
+
+configure_dotfiles: no
+configure_sudoers: yes
+configure_terminal: yes
+configure_osx: yes
+
+dotfiles_repo: https://github.com/geerlingguy/dotfiles.git
+dotfiles_repo_accept_hostkey: yes
+dotfiles_repo_local_destination: $DEVWORLD_ROOT/src/geerlingguy/dotfiles
+dotfiles_files:
+  - .bash_profile
+  - .gitignore
+  - .inputrc
+  - .osx
+  - .vimrc
+
+homebrew_installed_packages:
+  # - ansible # Installed via Pip.
+  - fortune
+  - autoconf
+  - fontconfig
+  - zsh
+  - ruby
+  - bash-completion
+  - chromedriver
+  # - doxygen
+  # - gettext
+  # - gifsicle
+  - git
+  - git-flow
+  - git-flow-avh
+  - bower
+  # - go
+  # - gpg
+  # - hub
+  # - httpie
+  # - iperf
+  # - libevent
+  # - sqlite
+  - mcrypt
+  # - nmap
+  # - node
+  - nvm
+  - ssh-copy-id
+  - cowsay
+  - readline
+  - openssl
+  - pv
+  - wget
+  - wrk
+  - docker-compose
+  - z
+  - composer
+  #
+  #
+  #
+  #  Make sure to convert to yml format if you want to enable any of the following:
+  #
+  #
+
+  # // http://conqueringthecommandline.com/book/ack_ag
+  # 'ack',
+  # 'ag',
+  # // Install GNU core utilities (those that come with OS X are outdated)
+  # // Don’t forget to add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.
+  # 'coreutils',
+  # 'dos2unix',
+  # // Install GNU `find`, `locate`, `updatedb`, and `xargs`, `g`-prefixed
+  # 'findutils',
+  # 'fortune',
+  # 'gawk',
+  # // http://www.lcdf.org/gifsicle/ (because I'm a gif junky)
+  # 'gifsicle',
+  # 'gnupg',
+  # // Install GNU `sed`, overwriting the built-in `sed`
+  # // so we can do "sed -i 's/foo/bar/' file" instead of "sed -i '' 's/foo/bar/' file"
+  # 'gnu-sed --with-default-names',
+  # // better, more recent grep
+  # 'homebrew/dupes/grep',
+  # // https://github.com/jkbrzt/httpie
+  # 'httpie',
+  # // jq is a sort of JSON grep
+  # 'jq',
+  # // Mac App Store CLI: https://github.com/mas-cli/mas
+  # 'mas',
+  # // Install some other useful utilities like `sponge`
+  # 'moreutils',
+  # 'nmap',
+  # 'openconnect',
+  # 'reattach-to-user-namespace',
+  # // better/more recent version of screen
+  # 'homebrew/dupes/screen',
+  # 'tmux',
+  # 'tree',
+  # 'ttyrec',
+  # // better, more recent vim
+  # 'vim --with-override-system-vi',
+  # 'watch',
+  # // Install wget with IRI support
+  # 'wget --enable-iri'
+
+homebrew_taps:
+  - homebrew/core
+  - homebrew/cask
+  - homebrew/cask-fonts
+#  - homebrew/php
+
+homebrew_cask_appdir: /Applications
+homebrew_cask_apps:
+  - gpg-suite-no-mail
+  - dash
+  - iterm2
+  - docker
+  - kitematic
+  - livereload
+  # - dropbox
+  # - fing # Download link keeps getting changed, d'oh!
+  - hyperswitch
+  - firefox
+  - google-chrome
+  - safari-technology-preview
+  - slack
+  - mysqlworkbench
+  - atom
+  - filezilla
+  - keka
+  - phpstorm
+  - royal-tsx
+  - bbedit
+  - virtualbox
+  - squidman
+  - viscosity
+  - lastpass
+  - microsoft-office
+  - font-fontawesome
+  - font-awesome-terminal-fonts
+  - font-hack
+  - font-inconsolata-dz-for-powerline
+  - font-inconsolata-g-for-powerline
+  - font-inconsolata-for-powerline
+  - font-roboto-mono
+  - font-roboto-mono-for-powerline
+  - font-source-code-pro
+  - spotify
+  - postman
+  - sourcetree
+  - skype
+  - alfred
+  - homebrew/cask-versions/java8
+  - android-sdk
+  - android-platform-tools
+  #
+  #
+  #
+  #  Make sure to convert to yml format if you want to enable any of the following:
+  #
+  #
+  # //'adium',
+  # //'amazon-cloud-drive',
+  # //'atom',
+  # // 'box-sync',
+  # //'comicbooklover',
+  # //'diffmerge',
+  # //'dropbox',
+  # //'evernote',
+  # 'gpgtools',
+  # //'ireadfast',
+  # 'iterm2',
+  # 'little-snitch',
+  # 'micro-snitch',
+  # //'macvim',
+  # 'sizeup',
+  # //'sketchup',
+  # 'slack',
+  # 'the-unarchiver',
+  # //'torbrowser',
+  # //'transmission',
+  # //'vlc',
+  # 'xquartz'
+
+# See `geerlingguy.mas` role documentation for usage instructions.
+mas_installed_apps: []
+mas_email: ""
+mas_password: ""
+
+osx_script: "~/.osx --no-restart"
+
+# Install packages from other package managers.
+# Note: You are responsible for making sure the required package managers are
+# installed, eg. through homebrew.
+composer_packages: []
+  # - name: drush
+  #   state: present # present/absent, default: present
+  #   version: "^8.1" # default: N/A
+gem_packages:
+  - name: docker-sync
+    state: latest
+  - name: git-up
+    state: latest
+  # - name: bundler
+  #   state: present # present/absent/latest, default: present
+  #   version: "~> 1.15.1" # default: N/A
+npm_packages:
+  - name: browser-sync
+    state: latest
+  # - name: webpack
+  #   state: present # present/absent/latest, default: present
+  #   version: "^2.6" # default: N/A
+pip_packages: []
+  # - name: mkdocs
+  #   state: present # present/absent/latest, default: present
+  #   version: "0.16.3" # default: N/A
+
+# Glob pattern to ansible task files to run after all other tasks are finished.
+post_provision_tasks: []
