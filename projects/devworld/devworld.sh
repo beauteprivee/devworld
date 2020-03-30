@@ -191,6 +191,7 @@ function Devworld__postInstall()
   echo "export DEVWORLD_WORKSPACE="${DEVWORLD_WORKSPACE} >> $HOME/.profile
   echo "export DEVWORLD_ROOT="${DEVWORLD_ROOT} >> $HOME/.profile
   echo "export DEVWORLD_PROJECT_GIT_USERNAME="${DEVWORLD_PROJECT_GIT_USERNAME} >> $HOME/.profile
+  echo "export DEVWORLD_BITBUCKET_USERNAME="${DEVWORLD_BITBUCKET_USERNAME} >> $HOME/.profile
   touch $DEVWORLD_ROOT/$DEVWORLD_PROJECT_NAME".installed.lock"
 
   #bot "Start the LAMP stack by running world.sh or 'cd $DEVWORLD_ROOT/src/devilbox && docker-compose up ...' see https://github.com/cytopia/devilbox for more info."

@@ -153,16 +153,21 @@ function Devilbox__install()
 function Devilbox__launch()
 {
   Devilbox__updateConfigurations
+
+  if [[ -z $DEVWORLD_PROJECT_DEFAULT_CONTAINERS ]]; then
+    DEVWORLD_PROJECT_DEFAULT_CONTAINERS="bind mysql memcd elasticsearch"
+  fi
+
   if [[ "$DEVWORLD_SCHEDULERESTART" == "1" ]]; then
-    cd $DEVWORLD_ROOT/src/devilbox/ && docker-compose up -d bind mysql memcd elasticsearch $@
+    cd $DEVWORLD_ROOT/src/devilbox/ && docker-compose up -d $DEVWORLD_PROJECT_DEFAULT_CONTAINERS $@
     if [ -z `docker ps -q --no-trunc | grep $(docker-compose ps -q httpd)` ]; then
       error "Devilbox container httpd is not running"
     else
       docker-compose stop
       Devilbox__installCA
-      cd $DEVWORLD_ROOT/src/devilbox/ && docker-compose up bind mysql memcd elasticsearch $@
+      cd $DEVWORLD_ROOT/src/devilbox/ && docker-compose up $DEVWORLD_PROJECT_DEFAULT_CONTAINERS $@
     fi
   else
-    cd $DEVWORLD_ROOT/src/devilbox/ && docker-compose up bind mysql memcd elasticsearch $@
+    cd $DEVWORLD_ROOT/src/devilbox/ && docker-compose up $DEVWORLD_PROJECT_DEFAULT_CONTAINERS $@
   fi
 }
