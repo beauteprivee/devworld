@@ -167,6 +167,7 @@ function Devworld__initDevilbox()
 {
   running "Init Devilbox"
   source $DEVWORLD_ROOT/projects/devilbox/devilbox.sh
+  Devilbox__clone
   Devilbox__installCA
   Devilbox__linkProjectEnvFile
   ok

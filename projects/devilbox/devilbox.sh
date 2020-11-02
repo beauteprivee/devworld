@@ -25,6 +25,7 @@ function Devilbox__clone()
     ok "Devilbox__clone finished successfully."
   else
     pushd $DEVWORLD_ROOT/src/devilbox > /dev/null 2>&1
+    running "Fetching/Updating Devilbox project"
     git fetch && git pull
     popd > /dev/null 2>&1
   fi
