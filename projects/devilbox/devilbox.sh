@@ -56,11 +56,41 @@ function Devilbox__linkProjectEnvFile() {
 
 function Devilbox__updateConfigurations() {
   # Reset docker-compose.override from previous projects if any.
-  bot "Removing docker-compose.override from previous projects if any:"
-  rm -i $DEVWORLD_ROOT/src/devilbox/docker-compose.override.yml
+  bot "Shall I remove docker-compose.override from previous projects if any? [y|n](Auto Default:Y)"
 
-  bot "Removing devworld-project-custom.* from previous projects if any:"
-  rm -i $DEVWORLD_ROOT/src/devilbox/cfg/*/devworld-project-custom.*
+  while [[ true ]]; do
+    read -t 3 -n 2 -p 'Continue? (y/n): ' answer || answer="y"
+      case "$answer" in
+        [Yy] )
+          rm -f $DEVWORLD_ROOT/src/devilbox/docker-compose.override.yml;
+          break;;
+        [Nn] )
+          bot "Keeping the current file!";
+          break;;
+        * )
+          bot "Answer either y or n."
+          ;;
+      esac
+  done
+
+  bot "Shall I remove ALL devilbox custom (ini,conf,sh,...) files from previous projects if any? [y|n] (Auto Default:Y)"
+  while [[ true ]]; do
+    read -t 3 -n 2 -p 'Continue? (y/n): ' answer || answer="y"
+
+      case "$answer" in
+            [Yy] )
+                rm -f $DEVWORLD_ROOT/src/devilbox/cfg/*/devworld-project-custom*
+                break
+                ;;
+            [Nn] )
+                bot "Keeping the current file!"
+                break
+                ;;
+            * )
+                bot "Answer either y or n."
+                ;;
+      esac
+  done
 
   bot "Calling $DEVWORLD_PROJECT_NAME""__Devilbox__updateConfigurations"
   $DEVWORLD_PROJECT_NAME"__Devilbox__updateConfigurations"
